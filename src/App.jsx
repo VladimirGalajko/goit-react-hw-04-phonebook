@@ -18,11 +18,10 @@ export const App = () => {
     if (localData && JSON.parse(localData).length) {
       setContacts(JSON.parse(localData));
     }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
+
+
 
   const addContact = e => {
     const name = e.name;
