@@ -24,6 +24,7 @@ export const App = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
+
   const addContact = e => {
     const name = e.name;
     const number = e.number;
