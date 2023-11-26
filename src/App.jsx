@@ -10,20 +10,15 @@ import { Filter } from 'components/Filter';
 import { useEffect } from 'react';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
+  const [contacts, setContacts] = useState(() => {
     const localData = localStorage.getItem('contacts');
-    if (localData && JSON.parse(localData).length) {
-      setContacts(JSON.parse(localData));
-    }
-  }, []);
+    return localData ? JSON.parse(localData) : [];
+  });
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
 
   const addContact = e => {
     const name = e.name;
